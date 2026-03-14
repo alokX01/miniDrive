@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<script>
+window.tailwind = window.tailwind || {};
+window.tailwind.config = {
+  darkMode: "class"
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+<script>
+if(localStorage.theme === "dark"){
+document.documentElement.classList.add("dark");
+}
+</script>
+
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+
+<!-- Login form: data POST ho kar /user/login route pe ja raha hai -->
+<form class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md w-96" action="/user/login" method="post">
+
+<% if (error) { %>
+<p class="mb-4 text-sm text-red-600 dark:text-red-400"><%= error %></p>
+<% } %>
+
+<% if (success) { %>
+<p class="mb-4 text-sm text-green-600 dark:text-green-400"><%= success %></p>
+<% } %>
+
+<div class="mb-4">
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+Email or Username
+</label>
+
+<input type="text"
+class="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+placeholder="john@example.com or john"
+name="email"
+required />
+</div>
+
+<div class="mb-4">
+<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+Password
+</label>
+
+<input type="password"
+class="bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+placeholder="••••••••"
+name="password"
+required />
+</div>
+
+<button type="submit"
+class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5">
+Submit
+</button>
+
+<p class="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center">
+New user?
+<a href="/user/register" class="text-blue-600 dark:text-blue-400">Register here</a>
+</p>
+
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+</body>
+</html>
